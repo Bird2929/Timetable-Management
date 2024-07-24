@@ -1,0 +1,146 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+#subjectListContainer {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#subjectList {
+    list-style: none;
+    padding: 0;
+}
+
+.subject-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.subject-item .subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subject-item .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.subject-item .fold-btn {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.subject-item .fold-btn:hover {
+    background-color: #0056b3;
+}
+
+.history {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.history.open {
+    max-height: 500px; /* 適当な値に設定 */
+}
+
+.history .class-select {
+    margin-bottom: 10px;
+}
+
+.attendance-records {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.attendance-records > div {
+    padding: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+}
+
+.attendance {
+    background-color: #28a745;
+}
+
+.absence {
+    background-color: #dc3545;
+}
+
+.empty {
+    background-color: #e2e3e5;
+}
+
+.selected {
+    border-color: hsl(295, 100%, 50%);
+}
+
+.button-group {
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.absence-count {
+    font-size: 0.9em;
+    color: #dc3545;
+    margin-left: 10px;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .subject-item .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .subject-item .fold-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .attendance-records > div {
+        flex: 1 1 30%;
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 8px;
+    }
+}
