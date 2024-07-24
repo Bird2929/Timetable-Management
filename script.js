@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subjects[subjectName] = Array.from({ length: 15 }, () => []);
         saveSubjects();
         renderSubject(subjectName);
-    };    
+    };
 
     addSubjectBtn.addEventListener('click', () => {
         const subjectName = prompt('科目名を入力してください:');
@@ -102,19 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const editSubject = (subjectName) => {
-        const newName = prompt('新しい科目名を入力してください:', subjectName);
-        if (newName && !subjects[newName]) {
-            subjects[newName] = subjects[subjectName];
-            delete subjects[subjectName];
-            saveSubjects();
-            const subjectItem = document.querySelector(`.subject-item[data-subject="${subjectName}"]`);
-            subjectItem.querySelector('.subject-name').textContent = newName;
-            subjectItem.setAttribute('data-subject', newName);
-            updateSubjectHistory(newName);
-        }
-    };
-
     const deleteSubject = (subjectName) => {
         if (confirm(`本当に '${subjectName}' を削除しますか？`)) {
             delete subjects[subjectName];
@@ -135,13 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="fold-btn">展開/折りたたみ</button>
             </div>
             <div class="buttons">
-                <button class="edit-btn">変更</button>
                 <button class="delete-btn">削除</button>
             </div>
             <div id="history-${subjectName}" class="history"></div>
         `;
 
-        li.querySelector('.edit-btn').addEventListener('click', () => editSubject(subjectName));
         li.querySelector('.delete-btn').addEventListener('click', () => deleteSubject(subjectName));
         li.querySelector('.fold-btn').addEventListener('click', (event) => toggleHistory(subjectName, event));
 
